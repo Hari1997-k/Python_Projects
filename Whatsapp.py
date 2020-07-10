@@ -1,3 +1,4 @@
+/ TO DO THIS APPLICATION U NEED TO BE AUTHENTICATED BYV TWILIO "
 import os
 from twilio.rest import Client
 
