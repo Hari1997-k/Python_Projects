@@ -1,4 +1,7 @@
-/ TO DO THIS APPLICATION U NEED TO BE AUTHENTICATED BYV TWILIO "
+"""
+  ==> To do this program u need to get authenticated twilio phine number 
+  ==> u need to store the twilio authentication details in environmental variable to access easily
+"""
 import os
 from twilio.rest import Client
 
