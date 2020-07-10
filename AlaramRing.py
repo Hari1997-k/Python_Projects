@@ -5,35 +5,34 @@ import time
 def sound():
     mixer.init()
     mixer.music.load("D:/Alaram/alaram.mp3")
-    mixer.music.play()
+    mixer.music.play(3)
 
 
-def alarm():
-    hour = int(input("Enter the hour : "))
-    min = int(input("Enter the Min : "))
-    sec = int(input("Enter the Sec : "))
+hour = int(input("==>Enter The Hour : "))
+min = int(input("==>Enter The Minute : "))
+sec = int(input("==>Enter The Second : "))
+mer = input("Enter Am/Pm : ")
+print("Alaram Set To  ===> ", hour, ":", min, ":", sec, " ", mer)
 
-    n = 5
+if (mer == 'pm'):
+    hour = int(hour + 12)
 
-    print('alaram Set For : ', str(hour) + ":" + str(min) + ":" + str(sec))
-    while True:
-        if time.localtime().tm_hour == hour and time.localtime().tm_min == min and time.localtime().tm_sec == sec:
-            print(" Wake Up ")
-            break
-    sound ()
-    while n > 0:
-        mixer.music.play()
-        time.sleep(2)
+res = False
 
+while True:
+    if time.localtime().tm_sec == sec and time.localtime().tm_hour == hour and time.localtime().tm_min == min:
+        print("Wake Up ")
+        res = True
+        break
 
-    opt = print("Snooze Alaram : ")
-    if opt == 'Yes':
-        n = 3
-        time.sleep(1000)
+while res:
+    sound()
 
-        while n>0:
-            mixer.music.play()
-            time.sleep(2)
+    op = input("Do U Wana Snooze  Or Stop (sn/st): ")
+    if op == 'sn':
+        time.sleep(5)
+    elif op == 'st':
+        print("*************** Alaram Stopped ***************")
+        exit()
     else:
-            exit()
-alarm()
+        sound()
